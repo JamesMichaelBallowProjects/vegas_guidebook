@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import requests
+# import json
 
 # globals
 GEOCODE_API = r"https://geocode.maps.co/search?q="
@@ -91,20 +92,37 @@ with st.sidebar.form("my_form"):
     # submit button
     submitted = st.form_submit_button("Submit")
 
+# --- caption for author and update
+st.sidebar.caption(body="Made by: :red[James Michael Ballow]")
+st.sidebar.caption(body="Last Updated: :red[March 2023]")
+
 
 # visuals
-# --- map of travel
+# --- fetch data based on travel's address
 if submitted:
     data = fetch(f"{GEOCODE_API}{address}")
     if data:
         lon = float(data[0]["lon"])
         lat = float(data[0]["lat"])
+        st.write(f"{address} - {lat}, {lon}")
     else:
         st.error("Error")
 
-# map showing travel path
+# --- map showing travel path
+st.header("Your Travel Path")
 dots = get_lon_lat_connect_points(
     coord1=[lat, lon],
     coord2=[LAS_VEGAS_LAT, LAS_VEGAS_LON]
 )
 st.map(dots)
+
+# --- map showing hotels
+# with open("../hotel_information.json", "r") as f:
+#     hotels = json.loads(f.read())
+# st.write(hotels)
+# st.header("Hotels on Las Vegas Strip")
+# dots = get_lon_lat_connect_points(
+#     coord1=[lat, lon],
+#     coord2=[LAS_VEGAS_LAT, LAS_VEGAS_LON]
+# )
+# st.map(dots)

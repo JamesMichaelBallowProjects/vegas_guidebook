@@ -55,6 +55,10 @@ famousDrinkName = st.sidebar.radio(
     index=0
 ).replace(" ", "+").lower()
 
+# --- caption for author and update
+st.sidebar.caption(body="Made by: :red[James Michael Ballow]")
+st.sidebar.caption(body="Last Updated: :red[March 2023]")
+
 # grab data
 data = fetch(f"{DRINK_NAME_SEARCH_API}{famousDrinkName}")
 if not data:
@@ -78,8 +82,10 @@ for idx in range(1, 16):
     ing = data["drinks"][0][f"strIngredient{idx}"]
     if ing:
         quant = data["drinks"][0][f"strMeasure{idx}"]
+        if quant and quant[-1] == " ":
+            quant = quant[:-1]
         if quant:
-            ingredients.append(f"{ing} - (:red[{quant[:-1]}])")
+            ingredients.append(f"{ing} - (:red[{quant}])")
         else:
             ingredients.append(ing)
     else:

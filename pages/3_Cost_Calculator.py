@@ -228,6 +228,9 @@ pieColors = st.radio(
     index=1
 )
 
+# --- header
+st.header(":red[Approximate Cost to Gamble and Eat (Everyone in Trip)]")
+
 # --- pie chart showing cost breakdown
 loTotFactor = 100 / cost["total"]["loEstimate"]
 hiTotFactor = 100 / cost["total"]["hiEstimate"]
