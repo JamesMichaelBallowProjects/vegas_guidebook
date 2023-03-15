@@ -26,11 +26,11 @@ st.markdown("""
    accepting any donations or other financial incentives for creating this
    site.
 
-   This application was made to help you plan your trip to Las Vegas.
-   There are many things that are still in the works in this application,
-   and you can expect that there will be some modifications and additions
-   to the application as I find the time to do them. I'm hoping to have
-   a very good tool that you find both entertaining and informative.
+   This application was made as a tool to help plan a trip to Las Vegas.
+   This is a sample application using Streamlit that can perhaps be a
+   starting point for someone else's project! I had fun making this app
+   and I hope to correct/perfect it as time goes on. Feel free to take
+   what I have here in this application and make something of your own!
 
    #### Special Shout Out to Public and Semi-free APIs
    The following APIs helped to make this project happen.
@@ -40,6 +40,9 @@ st.markdown("""
    - [https://www.thecocktaildb.com/] - Provides information on alcoholic
                                         drinks and provides images of
                                         those drinks.
+   - [https://rapidapi.com/weatherapi/api/weatherapi-com/] - Provides a
+                     variety of weather-related data, of which I use a
+                     3-day forecast of weather in Vegas.
 
 """)
 
