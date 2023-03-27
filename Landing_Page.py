@@ -12,8 +12,8 @@ st.set_page_config(
 # vegas visual
 st.markdown("# Welcome to the :red[Ballow Vegas Guidebook]")
 st.image(
-    image="./media/vegas_sign.gif",
-    caption="Image source: https://gifer.com/en/826I"
+    image="./media/stephen-leonardi-hWX2pboBPBk-unsplash.jpg",
+    caption="Image Credit: https://unsplash.com/@stephenleo1982"
    )
 
 # disccussion
@@ -49,3 +49,6 @@ st.markdown("""
 st.sidebar.caption("Made by: :red[James Michael Ballow]")
 st.sidebar.markdown("LinkedIn: [james-michael-ballow]"
                     "(https://www.linkedin.com/in/james-michael-ballow)")
+st.sidebar.markdown("Professional Profile: [James M. Ballow]"
+                    "(https://jamesmichaelballowprojects.github.io"
+                    "/professional_profile/)")
