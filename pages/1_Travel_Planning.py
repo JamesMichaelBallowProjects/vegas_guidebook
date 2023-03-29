@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import requests
 import os
+from datetime import datetime
 
 # globals
 GEOCODE_API = r"https://geocode.maps.co/search?q="
@@ -21,11 +22,12 @@ weatherHeaders = {
 lat = LAS_VEGAS_LAT + 0.00000001
 lon = LAS_VEGAS_LON
 session = requests.Session()
+date = datetime.now()
 
 
 # functions
 @st.cache_data
-def fetch(url, headers={}):
+def fetch(url, _, headers={}):
     try:
         result = session.get(url, headers=headers)
         return result.json()
@@ -112,7 +114,11 @@ st.markdown(body="---")
 
 # --- fetch data based on travel's address
 if submitted:
-    data = fetch(f"{GEOCODE_API}{address}")
+    data = fetch(
+        f"{GEOCODE_API}{address}",
+        f"{date.month}-{date.day}-{date.year}",
+        headers={}
+    )
     if data:
         try:
             lon = float(data[0]["lon"])
@@ -133,7 +139,11 @@ st.markdown(body="---")
 
 # --- weather
 # fetch data
-weatherData = fetch(url=WEATHER_API, headers=weatherHeaders)
+weatherData = fetch(
+    WEATHER_API,
+    date,
+    headers=weatherHeaders
+)
 if not weatherData:
     st.error(body="Unfortunately, WeatherAPI is not working right now.")
 st.header(":red[3 Day Forecast]")
